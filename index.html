@@ -3,110 +3,563 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PetShop Amigo Fiel - Produtos e serviços para seu pet">
     <title>PetShop Amigo Fiel - Início</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
+    <style>
+        /* ==================== CSS CUSTOMIZADO ==================== */
+        
+        /* Variáveis de cores */
+        :root {
+            --primary-color: #ff6b35;
+            --secondary-color: #004e89;
+            --accent-color: #f77f00;
+            --light-bg: #f8f9fa;
+            --dark-text: #212529;
+        }
+        
+        /* Reset e configurações gerais */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-text);
+        }
+        
+        /* Cabeçalho */
+        .header-top {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .header-top h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .header-top .lead {
+            margin: 0;
+            font-size: 1rem;
+        }
+        
+        /* Navegação */
+        .navbar {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: bold;
+            color: var(--primary-color) !important;
+        }
+        
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+        
+        /* Carrossel */
+        .carousel-item {
+            height: 400px;
+            background-color: var(--light-bg);
+        }
+        
+        .carousel-item img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+        
+        .carousel-caption {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        /* Cards de produtos */
+        .product-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            height: 100%;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+        }
+        
+        .product-card img {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .price {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        /* Seções */
+        .section-title {
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+        }
+        
+        /* Botões customizados */
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border: none;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            transition: transform 0.3s ease;
+        }
+        
+        .btn-primary-custom:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+        }
+        
+        /* Rodapé */
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 3rem 0 1rem 0;
+            margin-top: 4rem;
+        }
+        
+        footer h5 {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        
+        footer a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        footer a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Animação de entrada */
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Relógio digital */
+        #clock {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+        }
+        
+        /* Badge de destaque */
+        .badge-destaque {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
+    <!-- ==================== CABEÇALHO ==================== -->
     <header>
-        <h1>🐾 PetShop Amigo Fiel</h1>
-        <p><em>Cuidando do seu pet com amor e dedicação</em></p>
-        <nav>
-            <a href="index.html">Início</a> |
-            <a href="racoes.html">Rações</a> |
-            <a href="brinquedos.html">Brinquedos</a> |
-            <a href="acessorios.html">Acessórios</a> |
-            <a href="servicos.html">Serviços</a> |
-            <a href="contato.html">Contato</a>
+        <!-- Topo com informações -->
+        <div class="header-top">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h1><i class="bi bi-hearts"></i> PetShop Amigo Fiel</h1>
+                        <p class="lead mb-0">Cuidando do seu pet com amor e dedicação</p>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <!-- Relógio dinâmico -->
+                        <div id="clock"></div>
+                        <small><i class="bi bi-telephone"></i> (51) 3456-7890</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Menu de navegação -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" aria-label="Menu principal de navegação">
+            <div class="container">
+                <a class="navbar-brand" href="index.html" title="Ir para página inicial">
+                    <i class="bi bi-house-heart"></i> Início
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar menu de navegação">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html" title="Página inicial">Início</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="produtosDropdown" role="button" 
+                               data-bs-toggle="dropdown" aria-expanded="false" title="Ver produtos">
+                                Produtos
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="produtosDropdown">
+                                <li><a class="dropdown-item" href="#racoes">Rações</a></li>
+                                <li><a class="dropdown-item" href="#brinquedos">Brinquedos</a></li>
+                                <li><a class="dropdown-item" href="#acessorios">Acessórios</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#servicos" title="Nossos serviços">Serviços</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="mostrarCadastro()" title="Cadastre-se">Cadastro</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="mostrarAgendamento()" title="Agende um serviço">Agendamento</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contato" title="Entre em contato">Contato</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
-        <hr>
     </header>
 
-    <main>
-        <section>
-            <h2>Bem-vindo ao PetShop Amigo Fiel!</h2>
-            <p>Somos especializados em produtos e serviços de qualidade para o seu melhor amigo. Com mais de 10 anos de experiência, oferecemos tudo que seu pet precisa para uma vida feliz e saudável.</p>
+    <!-- ==================== CARROSSEL ==================== -->
+    <section id="carrossel" class="fade-in">
+        <div id="carouselPrincipal" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselPrincipal" data-bs-slide-to="0" class="active" 
+                        aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselPrincipal" data-bs-slide-to="1" 
+                        aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselPrincipal" data-bs-slide-to="2" 
+                        aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <!-- Slide 1 -->
+                <div class="carousel-item active">
+                    <img src="https://images.unsplash.com/photo-1629890585957-9019d4ba7a8b?w=1200&h=400&fit=crop&q=80" 
+                         class="d-block w-100" alt="Cão feliz recebendo banho e tosa profissional">
+                    <div class="carousel-caption">
+                        <h2>Banho e Tosa Profissional</h2>
+                        <p>Seu pet merece o melhor cuidado!</p>
+                        <button class="btn btn-primary-custom" onclick="mostrarAgendamento()">Agende Agora</button>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1623387641168-d9803ddd3f35?w=1200&h=400&fit=crop&q=80" 
+                         class="d-block w-100" alt="Variedade de rações premium para cães e gatos">
+                    <div class="carousel-caption">
+                        <h2>Rações Premium</h2>
+                        <p>Nutrição de qualidade para seu amigo</p>
+                        <a href="#racoes" class="btn btn-primary-custom">Ver Produtos</a>
+                    </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=1200&h=400&fit=crop&q=80" 
+                         class="d-block w-100" alt="Pet feliz brincando com brinquedos coloridos">
+                    <div class="carousel-caption">
+                        <h2>Brinquedos e Acessórios</h2>
+                        <p>Diversão e conforto garantidos!</p>
+                        <a href="#brinquedos" class="btn btn-primary-custom">Confira</a>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselPrincipal" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselPrincipal" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Próximo</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- ==================== CONTEÚDO PRINCIPAL ==================== -->
+    <main class="container my-5">
+        
+        <!-- Seção de Boas-vindas -->
+        <section class="text-center mb-5 fade-in">
+            <h2 class="section-title">Bem-vindo ao PetShop Amigo Fiel!</h2>
+            <p class="lead">Há mais de 10 anos cuidando dos pets com amor, dedicação e profissionalismo.</p>
         </section>
 
-        <section>
-            <h2>Nossos Produtos em Destaque</h2>
-            
-            <h3>Rações</h3>
-            <article>
-                <h4>Ração Premium para Cães Adultos 15kg</h4>
-                <img src="https://via.placeholder.com/200x200?text=Racao+Caes" alt="Ração para Cães" width="200" height="200">
-                <p><strong>Descrição:</strong> Ração completa e balanceada para cães adultos de todas as raças. Rico em proteínas e vitaminas.</p>
-                <p><strong>Valor:</strong> R$ 149,90</p>
-            </article>
-
-            <article>
-                <h4>Ração Special para Gatos Filhotes 3kg</h4>
-                <img src="https://via.placeholder.com/200x200?text=Racao+Gatos" alt="Ração para Gatos" width="200" height="200">
-                <p><strong>Descrição:</strong> Fórmula especial para gatos filhotes, com nutrientes essenciais para o desenvolvimento saudável.</p>
-                <p><strong>Valor:</strong> R$ 89,90</p>
-            </article>
-
-            <h3>Brinquedos</h3>
-            <article>
-                <h4>Bola de Borracha Resistente</h4>
-                <img src="https://via.placeholder.com/200x200?text=Bola+Resistente" alt="Bola para Cães" width="200" height="200">
-                <p><strong>Descrição:</strong> Bola super resistente, ideal para cães de grande porte. Material atóxico e durável.</p>
-                <p><strong>Valor:</strong> R$ 24,90</p>
-            </article>
-
-            <article>
-                <h4>Arranhador para Gatos Torre</h4>
-                <img src="https://via.placeholder.com/200x200?text=Arranhador" alt="Arranhador para Gatos" width="200" height="200">
-                <p><strong>Descrição:</strong> Torre arranhador com 3 andares, plataformas e brinquedos suspensos. Perfeito para gatos ativos.</p>
-                <p><strong>Valor:</strong> R$ 189,90</p>
-            </article>
-
-            <h3>Acessórios</h3>
-            <article>
-                <h4>Coleira Ajustável com Guia</h4>
-                <img src="https://via.placeholder.com/200x200?text=Coleira+Guia" alt="Coleira com Guia" width="200" height="200">
-                <p><strong>Descrição:</strong> Kit coleira ajustável em nylon resistente com guia de 1,5m. Disponível em várias cores.</p>
-                <p><strong>Valor:</strong> R$ 34,90</p>
-            </article>
-
-            <article>
-                <h4>Cama Confortável para Pets Grande</h4>
-                <img src="https://via.placeholder.com/200x200?text=Cama+Pet" alt="Cama para Pets" width="200" height="200">
-                <p><strong>Descrição:</strong> Cama macia e confortável com tecido impermeável. Fácil de lavar e super durável.</p>
-                <p><strong>Valor:</strong> R$ 129,90</p>
-            </article>
+        <!-- Seção RAÇÕES -->
+        <section id="racoes" class="mb-5 fade-in">
+            <h2 class="section-title text-center">
+                <i class="bi bi-bowl"></i> Rações
+            </h2>
+            <div class="row g-4">
+                <!-- Produto 1 -->
+                <div class="col-md-6">
+                    <div class="card product-card">
+                        <span class="badge-destaque">Mais Vendido</span>
+                        <img src="https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=500&h=400&fit=crop&q=80" 
+                             class="card-img-top" alt="Ração Premium para Cães Adultos embalagem de 15kg com carne e vegetais">
+                        <div class="card-body">
+                            <h3 class="card-title">Ração Premium para Cães Adultos 15kg</h3>
+                            <p class="card-text">Ração completa e balanceada para cães adultos de todas as raças. 
+                               Rico em proteínas de alta qualidade, vitaminas e minerais essenciais.</p>
+                            <p class="price">R$ 149,90</p>
+                            <button class="btn btn-primary-custom w-100" onclick="adicionarCarrinho('Ração Premium Cães', 149.90)">
+                                <i class="bi bi-cart-plus"></i> Adicionar ao Carrinho
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Produto 2 -->
+                <div class="col-md-6">
+                    <div class="card product-card">
+                        <img src="https://images.unsplash.com/photo-1548366086-7f1b76106622?w=500&h=400&fit=crop&q=80" 
+                             class="card-img-top" alt="Ração Special para Gatos Filhotes embalagem de 3kg fórmula especial">
+                        <div class="card-body">
+                            <h3 class="card-title">Ração Special para Gatos Filhotes 3kg</h3>
+                            <p class="card-text">Fórmula especial desenvolvida para gatos filhotes de 2 a 12 meses. 
+                               Contém DHA para desenvolvimento cerebral e cálcio para ossos fortes.</p>
+                            <p class="price">R$ 89,90</p>
+                            <button class="btn btn-primary-custom w-100" onclick="adicionarCarrinho('Ração Gatos Filhotes', 89.90)">
+                                <i class="bi bi-cart-plus"></i> Adicionar ao Carrinho
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section>
-            <h2>Serviços Oferecidos</h2>
-            <p>Confira nossos serviços especializados. <a href="servicos.html">Clique aqui para ver detalhes completos</a>.</p>
+        <!-- Seção BRINQUEDOS -->
+        <section id="brinquedos" class="mb-5 fade-in">
+            <h2 class="section-title text-center">
+                <i class="bi bi-balloon"></i> Brinquedos
+            </h2>
+            <div class="row g-4">
+                <!-- Produto 1 -->
+                <div class="col-md-6">
+                    <div class="card product-card">
+                        <img src="https://images.unsplash.com/photo-1535294435445-d7249524ef2e?w=500&h=400&fit=crop&q=80" 
+                             class="card-img-top" alt="Bola de borracha resistente colorida para cães de grande porte">
+                        <div class="card-body">
+                            <h3 class="card-title">Bola de Borracha Resistente</h3>
+                            <p class="card-text">Bola super resistente fabricada em borracha natural atóxica. 
+                               Ideal para cães de grande porte e brincadeiras intensas.</p>
+                            <p class="price">R$ 24,90</p>
+                            <button class="btn btn-primary-custom w-100" onclick="adicionarCarrinho('Bola Resistente', 24.90)">
+                                <i class="bi bi-cart-plus"></i> Adicionar ao Carrinho
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Produto 2 -->
+                <div class="col-md-6">
+                    <div class="card product-card">
+                        <span class="badge-destaque">Novidade</span>
+                        <img src="https://images.unsplash.com/photo-1545249390-6bdfa286032f?w=500&h=400&fit=crop&q=80" 
+                             class="card-img-top" alt="Arranhador torre para gatos com três andares plataformas e brinquedos">
+                        <div class="card-body">
+                            <h3 class="card-title">Arranhador para Gatos Torre</h3>
+                            <p class="card-text">Torre arranhador completa com 3 andares, plataformas para descanso 
+                               e brinquedos suspensos. Altura de 120cm.</p>
+                            <p class="price">R$ 189,90</p>
+                            <button class="btn btn-primary-custom w-100" onclick="adicionarCarrinho('Arranhador Torre', 189.90)">
+                                <i class="bi bi-cart-plus"></i> Adicionar ao Carrinho
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção ACESSÓRIOS -->
+        <section id="acessorios" class="mb-5 fade-in">
+            <h2 class="section-title text-center">
+                <i class="bi bi-bag"></i> Acessórios
+            </h2>
+            <div class="row g-4">
+                <!-- Produto 1 -->
+                <div class="col-md-6">
+                    <div class="card product-card">
+                        <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=500&h=400&fit=crop&q=80" 
+                             class="card-img-top" alt="Kit coleira ajustável em nylon com guia de segurança para cães">
+                        <div class="card-body">
+                            <h3 class="card-title">Coleira Ajustável com Guia</h3>
+                            <p class="card-text">Kit completo com coleira ajustável em nylon resistente e guia de 1,5m. 
+                               Fivelas de segurança em metal reforçado.</p>
+                            <p class="price">R$ 34,90</p>
+                            <button class="btn btn-primary-custom w-100" onclick="adicionarCarrinho('Coleira com Guia', 34.90)">
+                                <i class="bi bi-cart-plus"></i> Adicionar ao Carrinho
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Produto 2 -->
+                <div class="col-md-6">
+                    <div class="card product-card">
+                        <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=500&h=400&fit=crop&q=80" 
+                             class="card-img-top" alt="Cama macia e confortável para pets de médio e grande porte">
+                        <div class="card-body">
+                            <h3 class="card-title">Cama Confortável para Pets Grande</h3>
+                            <p class="card-text">Cama super macia com enchimento de fibra siliconada. 
+                               Tecido externo impermeável. Base antiderrapante. 80x60x15cm.</p>
+                            <p class="price">R$ 129,90</p>
+                            <button class="btn btn-primary-custom w-100" onclick="adicionarCarrinho('Cama Pet Grande', 129.90)">
+                                <i class="bi bi-cart-plus"></i> Adicionar ao Carrinho
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção SERVIÇOS -->
+        <section id="servicos" class="mb-5 fade-in">
+            <h2 class="section-title text-center">
+                <i class="bi bi-star"></i> Nossos Serviços
+            </h2>
+            <div class="row g-4">
+                <!-- Serviço 1 -->
+                <div class="col-md-6">
+                    <div class="card product-card">
+                        <div class="card-body">
+                            <h3 class="card-title"><i class="bi bi-water"></i> Banho e Tosa</h3>
+                            <p class="card-text">Serviço completo de banho e tosa realizado por profissionais experientes. 
+                               Inclui banho, secagem, tosa, corte de unhas e limpeza de ouvidos.</p>
+                            <p><strong>Valores:</strong></p>
+                            <ul>
+                                <li>Cães pequenos: R$ 50,00</li>
+                                <li>Cães médios: R$ 70,00</li>
+                                <li>Cães grandes: R$ 90,00</li>
+                            </ul>
+                            <p class="text-success"><i class="bi bi-truck"></i> <strong>Tele-busca disponível</strong> (+R$ 15,00)</p>
+                            <button class="btn btn-primary-custom w-100" onclick="mostrarAgendamento('Banho e Tosa')">
+                                <i class="bi bi-calendar-check"></i> Agendar Serviço
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Serviço 2 -->
+                <div class="col-md-6">
+                    <div class="card product-card">
+                        <div class="card-body">
+                            <h3 class="card-title"><i class="bi bi-scissors"></i> Tosa Completa</h3>
+                            <p class="card-text">Tosa higiênica ou completa conforme a raça e preferência. 
+                               Profissionais qualificados e ambiente seguro.</p>
+                            <p><strong>Valores:</strong></p>
+                            <ul>
+                                <li>Cães pequenos: R$ 40,00</li>
+                                <li>Cães médios: R$ 55,00</li>
+                                <li>Cães grandes: R$ 70,00</li>
+                            </ul>
+                            <p class="text-success"><i class="bi bi-truck"></i> <strong>Tele-busca disponível</strong> (+R$ 15,00)</p>
+                            <button class="btn btn-primary-custom w-100" onclick="mostrarAgendamento('Tosa')">
+                                <i class="bi bi-calendar-check"></i> Agendar Serviço
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção CONTATO -->
+        <section id="contato" class="mb-5 fade-in">
+            <h2 class="section-title text-center">
+                <i class="bi bi-envelope"></i> Entre em Contato
+            </h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Informações de Contato</h4>
+                    <p><i class="bi bi-geo-alt"></i> <strong>Endereço:</strong> Rua dos Pets, 123 - Centro - São Leopoldo/RS</p>
+                    <p><i class="bi bi-telephone"></i> <strong>Telefone:</strong> (51) 3456-7890</p>
+                    <p><i class="bi bi-whatsapp"></i> <strong>WhatsApp:</strong> (51) 98765-4321</p>
+                    <p><i class="bi bi-envelope"></i> <strong>Email:</strong> contato@petshopamigofiel.com.br</p>
+                    <h5 class="mt-4">Horário de Funcionamento</h5>
+                    <p>Segunda a Sexta: 8h às 18h<br>
+                       Sábado: 8h às 14h<br>
+                       Domingo: Fechado</p>
+                </div>
+                <div class="col-md-6">
+                    <h4>Mapa de Localização</h4>
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13863.234567890123!2d-51.14789!3d-29.76!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjnCsDQ1JzM2LjAiUyA1McKwMDgnNTIuNCJX!5e0!3m2!1spt-BR!2sbr!4v1234567890"
+                                style="border:0;" allowfullscreen="" loading="lazy" 
+                                title="Mapa de localização do PetShop Amigo Fiel em São Leopoldo RS"></iframe>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
-    <hr>
+    <!-- ==================== RODAPÉ ==================== -->
     <footer>
-        <h3>Informações de Contato</h3>
-        <p><strong>Endereço:</strong> Rua dos Pets, 123 - Centro - São Leopoldo/RS</p>
-        <p><strong>Telefone:</strong> (51) 3456-7890</p>
-        <p><strong>WhatsApp:</strong> (51) 98765-4321</p>
-        <p><strong>Email:</strong> contato@petshopamigofiel.com.br</p>
-        
-        <h3>Horário de Funcionamento</h3>
-        <p>Segunda a Sexta: 8h às 18h</p>
-        <p>Sábado: 8h às 14h</p>
-        <p>Domingo: Fechado</p>
-
-        <nav>
-            <h3>Navegação</h3>
-            <a href="index.html">Início</a> |
-            <a href="racoes.html">Rações</a> |
-            <a href="brinquedos.html">Brinquedos</a> |
-            <a href="acessorios.html">Acessórios</a> |
-            <a href="servicos.html">Serviços</a> |
-            <a href="contato.html">Contato</a>
-        </nav>
-
-        <hr>
-        <p><small>&copy; 2025 PetShop Amigo Fiel. Todos os direitos reservados. CNPJ: 00.000.000/0001-00</small></p>
-        <p><small>Desenvolvido como projeto acadêmico</small></p>
-    </footer>
-</body>
-</html>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h5><i class="bi bi-house-heart"></i> PetShop Amigo Fiel</h5>
+                    <p>Cuidando do seu pet com amor e dedicação há mais de 10 anos.</p>
+                    <p><i class="bi bi-geo-alt"></i> Rua dos Pets, 123 - Centro<br>São Leopoldo/RS - CEP: 93010-000</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5><i class="bi bi-telephone"></i> Contato</h5>
+                    <p><i class="bi bi-telephone"></i> (51) 3456-7890</p>
+                    <p><i class="bi bi-whatsapp"></i> (51) 98765-4321</p>
+                    <p><i class="bi bi-envelope"></i> contato@petshopamigofiel.com.br</p>
+                    <p><strong>Horário:</strong><br>
+                    Seg-Sex: 8h às 18h<br>
+                    Sábado: 8h às 14h</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5><i class="bi bi-link-45deg"></i> Links Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#racoes" title="Ver rações"><i class="bi bi-chevron-right"></i> Rações</a></li>
+                        <li><a href="#brinquedos" title="Ver brinquedos"><i class="bi bi-chevron-right"></i> Brinquedos</a></li>
+                        <li><a href="#acessorios" title="Ver acessórios"><i class="bi bi-chevron-right"></i> Acessórios</a></li>
+                        <li><a href="#servicos" title="Nossos serviços"><i class="bi bi-chevron-right"></i> Serviços</a></li>
+                        <li><a href="#" onclick="mostrarAgendamento()" title="Agendar serviço"><i class="bi bi-chevron-right"></i> Agendamento</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.2)">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="mb-0"><small>&copy; 2024 PetShop Amigo Fiel. Todos os direitos reservados. CNPJ: 12.345.678/0001-90</small></p>
+                    <p><small>Desenvolvido como projeto acadêmico - Fase 2</small></p>
+                </div>
+            </div>
+        </div>
